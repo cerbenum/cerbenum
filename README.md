@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/cerbenum-identity.png" width="100%" alt="Cerbenum identity">
+<img src="./assets/cerbenum-identity2.png" width="100%" alt="Cerbenum identity">
 
 <br>
 
