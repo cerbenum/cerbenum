@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://cerbenum.github.io/cerbenum
+Sitemap: https://cerbenum.github.io/cerbenum/sitemap.xml
