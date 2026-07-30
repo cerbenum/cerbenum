@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+
+@theme {
+  /* ----------------------------------------------------------------------
+   * Black stays the primary, but the page is a lit graphite room rather than
+   * a void. Every text token below clears WCAG AA on --color-base and on
+   * --color-surface; anything dimmer is decoration only and never carries
+   * text.
+   *
+   *   base    #0e0f13   page              muted   #99a1ad   6.1:1
+   *   surface #16181d   panel             body    #c6cdd7  11.0:1
+   *   raised  #1e2128   inner core        bright  #f5f7fa  17.0:1
+   * -------------------------------------------------------------------- */
+  --color-base: #0e0f13;
+  --color-surface: #16181d;
+  --color-raised: #1e2128;
+  --color-line: #2e323b;
+  --color-line-soft: #23262d;
+  --color-muted: #99a1ad;
+  --color-body: #c6cdd7;
+  --color-silver: #d9dee5;
+  --color-bright: #f5f7fa;
+
+  --font-display: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --ease-brand: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-drift: drift 30s var(--ease-brand) infinite;
+  --animate-pulse-slow: pulse-slow 3.4s var(--ease-brand) infinite;
+  --animate-marquee: marquee 44s linear infinite;
+  --animate-scan: scan 5s var(--ease-brand) infinite;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.09);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-110%);
+  }
+  55%,
+  100% {
+    transform: translateY(220%);
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    /* Fixed header height, used by scroll-margin on every anchor target. */
+    --header-offset: 6.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  html,
+  body {
+    background-color: var(--color-base);
+    color: var(--color-body);
+  }
+
+  body {
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  [id] {
+    scroll-margin-top: var(--header-offset);
+  }
+
+  ::selection {
+    background: var(--color-bright);
+    color: var(--color-base);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-bright);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-base);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border-radius: 999px;
+    border: 3px solid var(--color-base);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted);
+  }
+}
+
+/* Polished-metal type treatment. Kept bright enough to stay legible on the
+   graphite background even at the darkest stop. */
+@utility text-chrome {
+  background-image: linear-gradient(
+    98deg,
+    #ffffff 0%,
+    #e4e8ee 20%,
+    #a8b0bb 40%,
+    #ffffff 54%,
+    #cdd3db 70%,
+    #9aa2ad 86%,
+    #f1f4f8 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility panel {
+  background: linear-gradient(
+    158deg,
+    color-mix(in srgb, var(--color-raised) 92%, white 8%) 0%,
+    var(--color-surface) 52%,
+    color-mix(in srgb, var(--color-surface) 88%, black 12%) 100%
+  );
+}
+
+/* Top highlight + hairline, the machined edge every card shares. */
+@utility edge {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.09),
+    inset 0 0 0 1px rgb(255 255 255 / 0.055);
+}
+
+@utility depth-3d {
+  transform-style: preserve-3d;
+  perspective: 1100px;
+}

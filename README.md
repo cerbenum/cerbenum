@@ -12,6 +12,8 @@
 [![Surface](https://img.shields.io/badge/PUBLIC_SURFACE-MINIMAL-111111?style=for-the-badge&labelColor=080808)](#)
 [![Release](https://img.shields.io/badge/RELEASE_POLICY-v1_OR_SILENCE-111111?style=for-the-badge&labelColor=080808)](#)
 
+[![Site](https://img.shields.io/badge/SITE-CERBENUM.GITHUB.IO-111111?style=for-the-badge&labelColor=080808)](https://cerbenum.github.io/cerbenum/)
+
 <br>
 
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&duration=3200&pause=900&color=A6ADB7&center=true&vCenter=true&width=760&lines=Some+systems+are+designed+to+be+seen.;Mine+are+designed+to+survive+being+observed.;Security+is+an+architecture%2C+not+a+promise." alt="Cerbenum manifesto">
@@ -187,6 +189,16 @@ signing material
 security-sensitive documentation
 operational secrets
 ```
+
+---
+
+## `SITE`
+
+**[cerbenum.github.io/cerbenum](https://cerbenum.github.io/cerbenum/)**
+
+The public surface: capabilities, the Veyna ecosystem, the system registry and the
+engineering doctrine. Source lives in [`site/`](./site) and publishes to the `gh-pages`
+branch of this repository.
 
 ---
 
